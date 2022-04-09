@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: web
+    command: npm run start
+    ports:
+      - ${APP_SERVER_PORT:-3001}:3001
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules/
+
+  redis:
+    image: redislabs/redisearch
+    restart: always
+    container_name: redis
+    ports:
+      - ${REDIS_PORT:-6379}:6379
+    volumes:
+      - ./docker/redis:/data
+
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: postgres
+    environment:
+      PGDATA: /var/lib/posgresql/data/homevest/
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-homevest}
+    ports:
+      - ${DB_PORT:-5432}:5432
+    volumes:
+      - ./docker/pgdata:/var/lib/postgresql/data

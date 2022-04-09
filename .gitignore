@@ -1,0 +1,36 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+coverage
+
+docker
+
+# production
+build
+
+# shared
+backend/shared
+frontend/shared
+
+# compose
+postgres-data
+
+# docker volumes
+docker/pgdata
+docker/redis
+
+# misc
+.DS_Store
+.env
+
+.idea
+.eslintcache
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.eslintcache

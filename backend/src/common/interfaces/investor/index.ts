@@ -1,0 +1,1 @@
+export type { IInvestor } from 'shared/common/interfaces/investor';

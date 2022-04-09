@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
+.outline label {
+  z-index: -1;
+}
+.outline input:focus-within ~ label,
+.outline input:not(:placeholder-shown) ~ label {
+  transform: scale(0.9) translateY(-15px);
+  z-index: 0;
+  margin-left: 12px;
+  padding: 2px 0;
+}
+.outline input:not(:focus-within) ~ .outline label {
+  transform: scale(1) translateY(-15px);
+}
